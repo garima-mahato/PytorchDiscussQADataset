@@ -3,7 +3,7 @@
 
 | Data | Data Size |
 |---|---|
-|[Pytorch Discuss QA](https://github.com/garima-mahato/PytorchDiscussQADataset/blob/main/pytorch_discussion/pytorch_discuss_data.json)| 23.923 MB|
+|[Pytorch Discuss QA](https://github.com/garima-mahato/PytorchDiscussQADataset/blob/main/pytorch_discuss_data.json)| 23.923 MB|
 
 
 This dataset contains solved questions and answers from **Pytorch Discuss**. 
