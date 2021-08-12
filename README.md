@@ -18,7 +18,7 @@ The dataset is in JSON format. It has 9,033 entries. It consist of:
 | source | The source of question and answer which is "pytorch_discuss" in our case| 
 | url | Link of query post| 
 | query | Question | 
-| solution | Anser for the specified quest| 
+| solution | Answer for the specified quest| 
 | solution_has_code | True if solution has code otherwise, False | 
 | query_has_code | True if query has code otherwise, False | 
 | category | The category to which the question belongs | 
