@@ -53,3 +53,6 @@ The dataset is in JSON format. It has 9,033 entries. It consist of:
   }
 ]
 ```
+
+
+![](https://raw.githubusercontent.com/garima-mahato/PytorchDiscussQADataset/main/category_wise_qa.png?token=AMPY6RHDWFJZKSNA6PEVP2TBCV5ZE)
