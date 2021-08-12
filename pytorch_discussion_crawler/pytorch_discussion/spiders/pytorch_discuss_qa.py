@@ -3,26 +3,6 @@ import pandas as pd
 from ast import literal_eval
 import json
 
-from bs4 import BeautifulSoup
-from bs4.element import Comment
-
-
-def tag_visible(element):
-    if element.parent.name not in ['code']:
-        return False
-    if isinstance(element, Comment):
-        return False
-    return True
-
-
-def text_from_html(body):
-    soup = BeautifulSoup(body, 'html.parser')
-    texts = soup.findAll(text=True)
-    print(texts)
-    visible_texts = filter(tag_visible, texts)
-    print(visible_texts)
-    return u" ".join(t.strip() for t in visible_texts)
-
 class PytorchDiscussQASpider(scrapy.Spider):
     name = 'pytorch_discuss_qa'
     allowed_domains = ['pytorch.org']
@@ -31,11 +11,11 @@ class PytorchDiscussQASpider(scrapy.Spider):
 
     def parse(self, response):
         res = json.loads(response.body.decode('utf8'))
-        category_list = res["category_list"]["categories"] # response.css('table.category-list td.category')
+        category_list = res["category_list"]["categories"]
         
         for item in category_list:
-            anchor = self.start_url[0] + "c/" + item["slug"] + "/" + str(item["id"]) + ".json?page=1&solved=yes" # f"{self.start_urls[0].rstrip('/')}{item.css('h3 a::attr(href)').extract()[0]}.json?page=1&solved=yes"
-            cat = item["slug"] #anchor.split('/')[-2]
+            anchor = self.start_url[0] + "c/" + item["slug"] + "/" + str(item["id"]) + ".json?page=1&solved=yes"
+            cat = item["slug"]
             if cat not in ["site-feedback", "jobs"]:
                 yield scrapy.Request(anchor, callback=self.parse_category_links, cb_kwargs=dict(category=cat))
                                     
@@ -45,7 +25,7 @@ class PytorchDiscussQASpider(scrapy.Spider):
         df = pd.DataFrame(res["topic_list"]["topics"])
         if "id" in df.columns.values and "slug" in df.columns.values:
             df["link"] = df.apply(lambda r: self.start_url[0] + "t/" + r["slug"] + "/" + str(r["id"]), axis=1)
-            links = df["link"].values # response.css('table.topic-list td.main-link a.title::attr(href)').extract()
+            links = df["link"].values
             for link in links:
                 yield scrapy.Request(link+'.json', callback=self.parse_category_link_page, cb_kwargs=dict(category=category, url=link))
                         
