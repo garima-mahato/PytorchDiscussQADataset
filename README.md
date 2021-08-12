@@ -1,10 +1,9 @@
 # Pytorch Discuss QA Dataset
 
 
-| Data | Data Size |
+| Data Formats | Data Size |
 |---|---|
-|[Pytorch Discuss QA](https://github.com/garima-mahato/PytorchDiscussQADataset/blob/main/pytorch_discuss_data.json)| 23.923 MB|
-
+|[JSON](https://github.com/garima-mahato/PytorchDiscussQADataset/blob/main/pytorch_discuss_data.json) , [Excel](https://github.com/garima-mahato/PytorchDiscussQADataset/raw/main/pytorch_forum_qa_dataset.xlsx)| 23.923 MB|
 
 This dataset contains solved questions and answers from **Pytorch Discuss**. 
 
